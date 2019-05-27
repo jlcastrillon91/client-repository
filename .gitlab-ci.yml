@@ -10,7 +10,7 @@ change_authors:
   script:
     - |
       git filter-branch --env-filter ' 
-      OLD_EMAIL="jlcastrillon91@gmail.com" 
+      OLD_EMAIL="john@doe.org" 
       CORRECT_NAME="Harlow Fres" 
       CORRECT_EMAIL="harlow.fres@gmail.com" 
       if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ] 

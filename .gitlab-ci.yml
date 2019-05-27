@@ -5,5 +5,6 @@ before_script:
 
 change_authors:
   script:
+    - sudo chmod +x change_authors.sh 
     - ./change_authors.sh
     - git push -f

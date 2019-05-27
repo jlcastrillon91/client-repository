@@ -4,7 +4,6 @@ before_script:
   - git config --global user.name 'Harlow Fres'
 
 change_authors:
-  stage: deploy
   script:
-	- ./change_authors.sh
-	- git push -f
+    - ./change_authors.sh
+    - git push -f

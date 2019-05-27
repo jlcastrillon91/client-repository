@@ -1,5 +1,23 @@
 stages:
   - deploy
+
+.filter_script: &filter_script |
+    git filter-branch --env-filter '
+    OLD_EMAIL="john@doe.org"
+    CORRECT_NAME="Harlow Fres"
+    CORRECT_EMAIL="harlow.fres@gmail.com"
+    if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
+    then
+        export GIT_COMMITTER_NAME="$CORRECT_NAME"
+        export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
+    fi
+    if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
+    then
+        export GIT_AUTHOR_NAME="$CORRECT_NAME"
+        export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
+    fi
+    ' --tag-name-filter cat -- --branches --tags
+
 before_script:
   - git remote set-url origin https://lovecraft:${CI_PUSH_TOKEN}@gitlab.com/lovecraft/dev-repository.git
   - git config --global user.email 'harlow.fres@gmail.com'
@@ -8,20 +26,5 @@ before_script:
 change_authors:
   stage: deploy
   script:
-    - >
-      git filter-branch --env-filter ' 
-      OLD_EMAIL="john@doe.org" 
-      CORRECT_NAME="Harlow Fres"
-      CORRECT_EMAIL="harlow.fres@gmail.com"
-      if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
-      then
-          export GIT_COMMITTER_NAME="$CORRECT_NAME"
-          export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
-      fi
-      if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
-      then
-          export GIT_AUTHOR_NAME="$CORRECT_NAME"
-          export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
-      fi
-      ' --tag-name-filter cat -- --branches --tags
+    - *filter_script
     - git push --force --tags origin 'refs/heads/*'

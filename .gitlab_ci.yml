@@ -1,0 +1,10 @@
+before_script:
+  - git remote set-url origin https://lovecraft:${CI_PUSH_TOKEN}@gitlab.com/dev-repository.git
+  - git config --global user.email 'harlow.fres@gmail.com'
+  - git config --global user.name 'Harlow Fres'
+
+change_authors:
+  stage: deploy
+  script:
+	- ./change_authors.sh
+	- git push -f

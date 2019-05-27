@@ -8,6 +8,7 @@ before_script:
 change_authors:
   stage: deploy
   script:
+    - git remote show origin
     - |
       git filter-branch --env-filter ' 
       OLD_EMAIL="jlcastrillon91@gmail.com" 

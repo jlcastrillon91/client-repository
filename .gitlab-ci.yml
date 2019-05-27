@@ -8,7 +8,7 @@ before_script:
 change_authors:
   stage: deploy
   script:
-    - |
+    - >
       git filter-branch --env-filter ' 
       OLD_EMAIL="john@doe.org" 
       CORRECT_NAME="Harlow Fres" 

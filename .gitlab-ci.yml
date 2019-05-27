@@ -4,6 +4,7 @@ before_script:
   - git config --global user.name 'Harlow Fres'
 
 change_authors:
+  image: edbizarro/gitlab-ci-pipeline-php:7.2-alpine
   script:
     - sudo chmod +x change_authors.sh 
     - ./change_authors.sh

@@ -29,3 +29,5 @@ change_authors:
     - *filter_script
     - git for-each-ref --format='delete %(refname)' refs/original | git update-ref --stdin
     - git push origin --force --all
+  only:
+    - schedules

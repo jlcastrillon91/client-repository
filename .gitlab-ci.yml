@@ -27,6 +27,6 @@ change_authors:
   stage: deploy
   script:
     - *filter_script
-    - git push origin --force --tags origin 'refs/remotes/*'
+    - git push origin --force --tags 'refs/remotes/*'
   only:
     - schedules

@@ -30,3 +30,4 @@ change_authors:
     - git push --force --tags origin HEAD:master -o ci.skip
   only:
     - master
+

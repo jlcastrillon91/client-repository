@@ -22,7 +22,6 @@ before_script:
   - git remote set-url origin https://lovecraft:${CI_PUSH_TOKEN}@gitlab.com/lovecraft/dev-repository.git
   - git config --global user.email 'harlow.fres@gmail.com'
   - git config --global user.name 'Harlow Fres'
-  - git symbolic-ref HEAD refs/heads/master
 
 change_authors:
   stage: deploy

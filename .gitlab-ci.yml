@@ -27,4 +27,5 @@ change_authors:
   stage: deploy
   script:
     - *filter_script
+    - git for-each-ref --format='delete %(refname)' refs/original | git update-ref --stdin
     - git push origin --force --all

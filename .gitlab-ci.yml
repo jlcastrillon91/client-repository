@@ -27,4 +27,4 @@ change_authors:
   stage: deploy
   script:
     - *filter_script
-    - git push --force --all origin
+    - git push --force --all

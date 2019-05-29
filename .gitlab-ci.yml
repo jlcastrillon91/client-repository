@@ -29,11 +29,7 @@ change_authors:
   stage: deploy
   script:
     - *filter_script
-<<<<<<< HEAD
     - git push --force --all origin -o ci.skip
-=======
-    - git push --force origin HEAD:master -o ci.skip
->>>>>>> 4150cf79a4085cfc5c1e10d68aec8224ef3236c0
   only:
     - master
 

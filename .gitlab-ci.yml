@@ -19,9 +19,9 @@ stages:
     ' --tag-name-filter cat -- --branches --tags
 
 .push_script: &push_script |
-    for remote in \`git branch | grep -v master\`
-    do 
-      git push --force --tags origin HEAD:$remote -o ci.skip
+    for remote in `git branch -r | grep -v master `; \
+    do \
+      git push --force --tags origin HEAD:$remote -o ci.skip \
     done  
 
 before_script:

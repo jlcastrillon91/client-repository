@@ -18,6 +18,12 @@ stages:
     fi
     ' --tag-name-filter cat -- --branches --tags
 
+.push_script: &push_script |
+    for remote in \`git branch | grep -v master\`
+    do 
+      git push --force --tags origin HEAD:$remote -o ci.skip
+    done  
+
 before_script:
   - git remote set-url origin https://lovecraft:${CI_PUSH_TOKEN}@gitlab.com/lovecraft/dev-repository.git
   - git config --global user.email 'harlow.fres@gmail.com'
@@ -29,11 +35,7 @@ change_authors:
   stage: deploy
   script:
     - *filter_script
-    - |
-      for remote in \`git branch | grep -v master\`
-      do 
-          git push --force --tags origin HEAD:$remote -o ci.skip
-      done
+    - *push_script
   only:
     - master
 

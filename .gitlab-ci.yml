@@ -21,7 +21,7 @@ stages:
 .push_script: &push_script |
     for remote in `git branch -r | grep -v master `; \
     do \
-      git push --force --tags origin HEAD:$remote -o ci.skip \
+      git push --force --tags origin "HEAD:$remote" -o ci.skip; \
     done  
 
 before_script:

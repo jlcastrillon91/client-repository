@@ -34,9 +34,7 @@ before_script:
 change_authors:
   stage: deploy
   script:
-    - git symbolic-ref HEAD
     - *filter_script
-    - git symbolic-ref HEAD
     - *push_script
   only:
     - master

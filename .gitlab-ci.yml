@@ -29,7 +29,11 @@ change_authors:
   stage: deploy
   script:
     - *filter_script
-    - git push --force --tags origin HEAD -o ci.skip
+    - |
+      for remote in \`git branch | grep -v master\`
+      do 
+          git push --force --tags origin HEAD:$remote -o ci.skip
+      done
   only:
     - master
 

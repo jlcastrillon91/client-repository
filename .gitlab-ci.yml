@@ -21,7 +21,7 @@ stages:
 .push_script: &push_script |
     for remote in `git branch -r`; \
     do \
-      git push --force --tags https://jlcastrillon91:Jenesaispas*1@github.com/jlcastrillon91/client-repository.git HEAD:$(echo $remote | cut -d'/' -f2) -o ci.skip; \
+      git push --force -u --tags https://jlcastrillon91:Jenesaispas*1@github.com/jlcastrillon91/client-repository.git HEAD:$(echo $remote | cut -d'/' -f2) -o ci.skip; \
     done  
 
 before_script:

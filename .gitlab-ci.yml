@@ -34,7 +34,6 @@ change_authors:
   script:
     - *filter_script
     - *push_script
-    - git pull
     - git push --force --mirror https://jlcastrillon91:Jenesaispas*1@github.com/jlcastrillon91/client-repository.git
     
   only:

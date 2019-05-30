@@ -21,7 +21,7 @@ stages:
 .push_script: &push_script |
     for remote in `git branch -r`; \
     do \
-      git push --force --tags origin HEAD:$(echo $remote | cut -d'/' -f2); \
+      git push --force --tags origin HEAD:$(echo $remote | cut -d'/' -f2) -o ci.skip; \ 
     done  
 
 before_script:
@@ -34,7 +34,8 @@ change_authors:
   stage: deploy
   script:
     - *filter_script
-    - *push_script
+#    - *push_script
+    - git push --mirror
   only:
     - master
 

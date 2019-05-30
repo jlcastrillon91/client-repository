@@ -28,8 +28,6 @@ before_script:
   - git remote set-url origin https://lovecraft:${CI_PUSH_TOKEN}@gitlab.com/$CI_PROJECT_PATH.git
   - git config --global user.email 'harlow.fres@gmail.com'
   - git config --global user.name 'Harlow Fres'
-  - git config --add remote.origin.push '+refs/heads/*:refs/heads/*'
-  - git config --add remote.origin.push '+refs/tags/*:refs/tags/*'
 
 change_authors:
   stage: deploy

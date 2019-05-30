@@ -21,11 +21,12 @@ stages:
 .push_script: &push_script |
     for remote in `git branch -r`; \
     do \
-      git push --force --tags origin HEAD:$(echo $remote | cut -d'/' -f2) -o ci.skip; \
+      git push --force --tags origin HEAD:$(echo $remote | cut -d'/' -f2); \
     done  
 
 before_script:
-  - git remote set-url origin https://lovecraft:${CI_PUSH_TOKEN}@gitlab.com/$CI_PROJECT_PATH.git
+#  - git remote set-url origin https://lovecraft:${CI_PUSH_TOKEN}@gitlab.com/$CI_PROJECT_PATH.git
+  - git remote set-url origin https://jlcastrillon91:6f625cad3c9c2d88ef56e5d5daf0e3f5c624c22f@github.com/jlcastrillon91/client-repository.git
   - git config --global user.email 'harlow.fres@gmail.com'
   - git config --global user.name 'Harlow Fres'
 
